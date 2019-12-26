@@ -143,10 +143,14 @@ public class WebConfigurer implements ServletContextInitializer, WebServerFactor
 
             source.registerCorsConfiguration("/services/**", config);
             // https://github.com/jhipster/generator-jhipster/issues/3318
+
         }
 
         // default is to deny all CORS requests
-        source.registerCorsConfiguration("/**", new CorsConfiguration());
+//        source.registerCorsConfiguration("/**", new CorsConfiguration());
+
+        source.registerCorsConfiguration("/*/**", config);
+        log.info("\n"+source);
         return new CorsFilter(source);
     }
 }
